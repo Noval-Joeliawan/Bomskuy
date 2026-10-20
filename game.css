@@ -1053,3 +1053,49 @@ kbd {
   color: var(--accent2);
   font-weight: 700;
 }
+
+/* Mencegah halaman bergeser (scroll horizontal/bounce) di HP */
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: fixed; /* Mencegah layar memantul saat ditarik di HP */
+  overscroll-behavior: none;
+}
+
+/* Memastikan wrapper board game pas menyesuaikan layar HP */
+.board-wrapper {
+  max-width: 100vw;
+  max-height: 65vh;
+  overflow: auto;
+  border-radius: 8px;
+  -webkit-overflow-scrolling: touch; /* Supaya scroll lancar di iOS/Android */
+}
+
+/* Mempercantik tombol kontrol mobile agar tidak menutupi area permainan */
+#mobileControls {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 140px;
+  pointer-events: none; /* Supaya area tengah tetap bisa disentuh jika diperlukan */
+  z-index: 9999;
+}
+
+#joystick, #bombBtn {
+  pointer-events: auto; /* Aktifkan kembali sentuhan khusus untuk tombol/joystick */
+}
+
+#joystick {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+}
+
+#bombBtn {
+  position: absolute;
+  right: 20px;
+  bottom: 30px;
+}
